@@ -1,0 +1,191 @@
+NGW-Persee-Hood with Leash, Vision and Hearing Control
+
+(Leash feature and Hearing restriction are optional to personal taste)
+(set your AnaVision to [Merge] that all textures are available on Mask and Pict)
+
+Marketplace links:
+Hood: https://marketplace.secondlife.com/p/NGW-PERSEE-HOOD/24086420
+Hearing Control: https://marketplace.secondlife.com/p/The-Unhearing/25135496
+Nosering: Can be any Septum ring as long its mod and looks good
+
+the Persee hood needs a clickprim, so i added a 'half sphere' as a "click helmet" and link everything to it, so it stays the rootprim and is attached to Skull
+rename the linkset to 'NGW persee hood AV - black (Skull)'
+change description of the nosering to 'leash'
+
+Content of the Hood:
+(the latest AnaVision-ReScript scripts)
+AV-ReScript-A.V8b18
+AV-ReScript-B.V8b18
+AV-ReScript-Leash.V8b13
+(from the UnHearing addon the dictonary and the AV-plugin)
+dictionary_doll (notecard, which can be edited by personal preferences)
+LucenTech - Unhearing rescript plugin 2.0.4.AV
+(and finally the AV-Recipe as shown underneath)
+AV-Recipe-NGW-Persee-Hood (just copy line 27 to Line 190 in a notecard)
+
+--------------------------------------------------------------------------------
+################
+#  main menu functions
+################
+
+# description for Main menu page
+menutitle="Hood with Leash, Hearing and Vision Restrictions."
+
+# makes menu re-appear after selecting an option.
+menustays=1
+
+# main menu buttons, two buttons are missing for lock and close buttons, list goes from bottom to top
+
+button=AV-Lock
+switch=Daze         switch=No_Names      button=AnaVision
+button=Vision_>>    button=Hearing_>>    button=Leash_>>
+
+# opens Vision main menu
+Vision_>>:true showmenu menu=Vision_Menu
+
+# opens Hearing main menu
+Hearing_>>:true showmenu menu=Hearing_Menu
+
+# opens Leash main menu
+Leash_>>:true showmenu menu=Leash_Menu
+
+# opens AV menu from local menu
+anavision:true showmenu menu=anavision
+
+Daze:true sayav text="daze=y"
+Daze:false sayav text="daze=n"
+
+No_Names:true sayav text="nonames=y"
+No_Names:false sayav text="nonames=n"
+
+av-lock:true sayav text="lock"
+av-lock:true lock:true
+
+
+#################
+#  Vision menu functions
+#################
+
+# Vision menus name to call
+menuname=Vision_Menu
+
+# description for Vision menu page
+menutitle="Set Vision Restrictions and the Level of Blindness, Overlay shows [Perforated] view. Unblind clears MouseLook, Blindness, Overlay and Cam Restriction."
+
+button=<<_Main      button=-             button=AnaVision
+button=Unblind      button=ML            switch=Overlay
+button=Medium       button=Thick         button=Opaque
+button=Blurry       button=Very_Thin     button=Thin    
+
+# returns back to main menu
+<<_Main:true showmenu menu=local
+
+Overlay:true sayav text="pict=Perforated"
+overlay:false sayav text="pict=n"
+
+Unblind:true sayav text="blind n"
+Unblind:true sayav text="camc n"
+Unblind:true sayav text="pict=n"
+
+# at attach show the Overlay
+attach:true Overlay:true
+
+# start with the Overlay
+init:true Overlay:true
+
+ML:true sayav text="ml=y"
+
+Blurry:true sayav text="blind=6; camc=6"
+
+Very_Thin:true sayav text="blind=5; camc=5"
+
+Thin:true sayav text="blind=4; camc=4"
+
+Medium:true sayav text="blind=3; camc=3"
+
+Thick:true sayav text="blind=2; camc=2"
+
+Opaque:true sayav text="blind=1; camc=2"
+
+anavision:true showmenu menu=anavision
+
+
+################
+# Hearing menu functions
+################
+
+# Hearing menus name to call
+menuname=Hearing_Menu
+
+# description for Hearing menu page
+menutitle="Set level of chat hearing restriction, Normal = No chat restriction, Deaf = No chat at all, Garbled = Garbled chat, Focus = Keyholder chat not restricted"
+
+button=<<_Main   button=Dictionary      switch=Focus
+button=Normal    button=Deaf            button=Garbled
+
+normal:true saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:on:AnaVision"
+
+deaf:true saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:off:AnaVision"
+
+garbled:true saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:garble:AnaVision"
+
+focus:true saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:focus:$KEY"
+focus:false saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:unfocus:$KEY"
+
+dictionary:true saychan text="1221351420538|4836d4cd-c058-4f4e-8249-3b23e91f0802:dictionary:$KEY"
+
+
+################
+#  Leash menu functions
+################
+
+# leash menus name to call
+menuname=Leash_Menu
+
+# description for leash menu page
+menutitle="Leash menu. Leash Turn: Forces the Doll to look at the leashholder. Close = 0.75m. Normal = 2m"
+
+button=<<_Main           button=-               button=-
+button=Leash_11m         button=Unleash         switch=Leash_Turn      
+button=Leash_Close       button=Leash_Normal    button=Leash_4m   
+
+# leash rlv commands including keyholder exception
+event=leashrlv
+leashrlv:true sendrlv rlvstring="tplm=n,tploc=n,sittp:1.5=n,tplure=n,tplure:$KEY=add,accepttp:$KEY=add"
+leashrlv:false sendrlv rlvstring="tplm=y,tploc=y,sittp:1.5=y,tplure=y,tplure:$KEY=rem,accepttp:$KEY=rem"
+
+# when leashed, enable rlv and post in chat
+leashing:true leashrlv:true say text="the Doll has been Leashed."
+
+# when unleashed, disable rlv and post in chat
+leashing:false leashrlv:false say text="the Doll has been Unleashed."
+
+# leashacc sets the acceleration when yanking the leash. Smooth movement default is 2.0
+# use < 1 for faster movement
+leashacc=0.1
+
+# leashes with range of 0.75m
+Leash_Close:true leash leashlen=0.75
+
+# leashes with range of 2m
+Leash_Normal:true leash leashlen=2
+
+# leashes with range of 4m
+Leash_4m:true leash leashlen=4
+
+# leashes Doll with range of 11m
+leash_11m:true leash leashlen=11
+
+# parameter leashturn can be set to force turning to the leashholder
+# leash parameters are only activated on the next "leash" actions, which is done in this example
+# a condition is used - the leash is only updated when active
+Leash_Turn:true setpar leashturn=1
+Leash_Turn:false setpar leashturn=0
+
+# use action unleash to unleash
+Unleash:true unleash
+
+# start with Leash_Turn active
+init:true Leash_Turn:true
+
+---------------------------------------------------------------------
