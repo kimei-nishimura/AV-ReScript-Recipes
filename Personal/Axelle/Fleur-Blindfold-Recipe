@@ -1,0 +1,62 @@
+# AV-ReScript-Recipe-Blindfold
+# Submitted with the permission from Axelle
+
+# AV-ReScript recipe for a blindfold that follows AnaVision blind setting
+# Default preset works by toggling all links and faces
+# Show the recipe used by adding:  verbose=1
+# See AnaVision 4 manual for more examples
+
+#verbose=1
+event=blindfold
+links=1,2,3,4
+
+blindfold:true show
+blindfold:false hide
+
+blind:true blindfold:true
+blind:false blindfold:false
+
+Button=AnaVision
+AnaVision:true showmenu menu=anavision
+button=OnLogin_>>
+OnLogin_>>:true showmenu menu=On_login
+menuname=On_login
+menutitle="Blindfold on login"
+
+button=<<                    button=<CLOSE>         button=-
+Switch=Medium                 Switch=Thick                Switch=Opaque  
+Switch=Blurry                     Switch=Very_thin                   Switch=Thin    
+
+<<:true showmenu menu=local
+
+onrez:true Blurry?true sayav text="blind=6"
+onrez:true Very_thin?true sayav text="blind=5"
+onrez:true Thin?true sayav text="blind=4"
+onrez:true Medium?true sayav text="blind=3"
+onrez:true Thick?true sayav text="blind=2"
+onrez:true Opaque?true sayav text="blind=1"
+
+Opaque:true Thick:false Medium:false Thin:false Very_thin:false Blurry:false
+Opaque:true say text="Fleur will be blindfolded to Opaque on every login"
+Opaque:false say text="Fleur will no longer be blindfolded to Opaque on every login"
+Thick:true Opaque:false Medium:false Thin:false Very_thin:false Blurry:false
+Thick:true say text="Fleur will be blindfolded to Thick on every login"
+Thick:false say text="Fleur will no longer be blindfolded to Thick on every login"
+Medium:true Opaque:false Thick:false Thin:false Very_thin:false Blurry:false
+Medium:true say text="Fleur will be blindfolded to Medium on every login"
+Medium:false say text="Fleur will no longer be blindfolded to Opaque on every login"
+Thin:true Opaque:false Thick:false Medium:false Very_thin:false Blurry:false
+Thin:true say text="Fleur will be blindfolded to Thin on every login"
+Thin:false say text="Fleur will no longer be blindfolded to Thin on every login"
+Very_thin:true Opaque:false Thick:false Medium:false Thin:false Blurry:false
+Very_thin:true say text="Fleur will be blindfolded to Very_thin on every login"
+Very_thin:false say text="Fleur will no longer be blindfolded to Very_thin on every login"
+Blurry:true Opaque:false Thick:false Medium:false Thin:false Very_thin:false
+Blurry:true say text="Fleur will be blindfolded to Blurry on every login"
+Blurry:false say text="Fleur will no longer be blindfolded to Blurry on every login"
+lock:false Opaque:false Thick:false Medium:false Thin:false Very_thin:false Blurry:false
+Menustays=1
+
+
+
+
