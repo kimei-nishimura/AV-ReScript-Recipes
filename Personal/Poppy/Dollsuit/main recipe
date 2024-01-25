@@ -1,0 +1,1099 @@
+# verbose mode for testing, comment out once complete
+# verbose=0
+
+# master tag 2
+master=2
+
+# makes menu re-appear after selecting an option.
+menustays=1
+
+#button=Memory
+#memory:true printmem
+
+
+################
+#  tack menu functions
+################
+
+# tack menu buttons, two buttons are missing for lock and close buttons, list goes from bottom to top
+
+button=AnaVision	button=Parts_>>	button=Belt_>>    
+ button=Restraints_>> 	button=Leashing_>>   button=Catsuits_>>
+button=HeadParts_>>   
+ 	 
+# opens headparts menu
+HeadParts_>>:true showmenu menu=HeadParts_Menu
+
+# opens leash menu
+Leashing_>>:true showmenu menu=leashing
+
+# opens belt menu
+Belt_>>:true showmenu menu=Belt_Menu
+
+# opens Catsuits menu
+Catsuits_>>:true showmenu menu=Catsuits_Menu
+
+# opens Restraints menu
+Restraints_>>:true showmenu menu=Restraints_Menu
+
+# opens Parts menu
+Parts_>>:true showmenu menu=Parts_Menu
+
+
+
+##################
+#  restraints menu functions
+##################
+
+# Restraints menus name to call
+menuname=Restraints_Menu
+
+button=<<_Menu  
+switch=ArmBinder	switch=Mittens  	switch=RevBinder
+switch=UBinder	switch=ButterflyBinder  switch=ArmlessBinder
+
+
+
+##################
+#  parts menu functions
+##################
+
+# Parts menus name to call
+menuname=Parts_Menu
+
+button=<<_Menu  switch=Skirt   switch=Panty
+switch=Collar 	switch=Bra	button=Boots_>>
+switch=OBCorset  	switch=UBCorset   switch=PonyTail
+
+# description for Parts menu page
+menutitle="Add some things."
+
+# opens Parts menu
+Boots_>>:true showmenu menu=Boots_Menu
+
+
+##################
+#  boots menu functions
+##################
+
+ # Boots menus name to call
+menuname=Boots_Menu
+
+
+button=<<_Menu   switch=PonyBoots
+ switch=BalletBoots   switch=ThighBoots
+
+
+###################
+#  panty switch functions
+###################
+
+# panty attach text
+Panty:true say text="You add some panties ."
+
+
+# panty detach text
+Panty:false say text="You remove Poppy’s Panties."
+
+
+# show/hide panty main
+links=panty
+faces=-1
+Panty:true show
+Panty:false hide
+
+
+###################
+#  ponytail switch functions
+###################
+
+# ponytail attach text
+ponytail:true say text="You add a pony tail ."
+
+
+# ponytail detach text
+PonyTail:false say text="You remove Poppy’s pony tail."
+
+
+# show/hide ponytail main
+links=ponytail
+faces=-1
+PonyTail:true show
+PonyTail:false hide
+
+
+###################
+#  skirt switch functions
+###################
+
+# skirt attach text
+Skirt:true say text="You add a skirt ."
+
+
+# skirt detach text
+Skirt:false say text="You remove Poppy’s skirt."
+
+# show/hide skirt main
+links=skirt
+faces=-1
+Skirt:true show
+Skirt:false hide
+
+
+##################
+#  catsuit switch functions
+##################
+
+# Catsuits menus name to call
+menuname=Catsuits_Menu
+
+button=<<_Menu  
+switch=CatsuitFull	switch=CatsuitOpen
+
+# description for Catsuits menu page
+menutitle="Make the Dolly shiny."
+
+# attach catsuitfull
+CatsuitFull:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollcatsuitfull=force" CatsuitOpen:false
+
+# catsuit full switch text
+CatsuitFull:true say text="You squeeze Poppy into a tight shiny catsuit."
+
+
+# catsuitfull detach autoalpha
+CatsuitFull:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollcatsuitfull=force"
+
+# catsuitfull switch text
+CatsuitFull:false say text="You remove Poppy’s Catsuit."
+
+
+# attach catsuitopen
+CatsuitOpen:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollcatsuitopen=force" CatsuitFull:false
+
+# catsuitopen switch text
+CatsuitOpen:true say text="You squeeze Poppy into a tight shiny exposed catsuit."
+
+
+# catsuitopen detach autoalpha
+CatsuitOpen:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollcatsuitopen=force"
+
+# catsuitopen switch text
+CatsuitOpen:false say text="You remove Poppy’s Catsuit."
+
+
+##################
+#  ballet switch functions
+##################
+
+# hide-show base ballet
+links=ballet
+faces=-1
+BalletBoots:true show
+BalletBoots:false hide
+
+# ballet attach autoalpha
+BalletBoots:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollballet=force"
+
+
+# ballet switch text
+BalletBoots:true say text="You attach Poppy’s BalletBoots."  ThighBoots:false PonyBoots:false
+
+
+# ballet detach autoalpha
+BalletBoots:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollballet=force"
+
+
+# ballet switch text
+BalletBoots:false say text="You detach Poppy’s BalletBoots"
+
+
+##################
+#  thighboots switch functions
+##################
+
+# hide-show base thighboots
+links=thighboots
+faces=-1
+ThighBoots:true show
+ThighBoots:false hide
+
+# thighboots attach autoalpha
+ThighBoots:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollthighboots=force"
+
+
+
+# thighboots switch text
+ThighBoots:true say text="You attach Poppy’s Thigh Boots." BalletBoots:false PonyBoots:false
+
+
+# thighboots detach autoalpha
+ThighBoots:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollthighboots=force"
+
+
+# thighboots switch text
+ThighBoots:false say text="You detach Poppy’s Thigh Boots"
+
+##################
+#  ponyboots switch functions
+##################
+
+# hide-show base ponyboots
+links=ponyboots
+faces=-1
+PonyBoots:true show
+PonyBoots:false hide
+
+# ponyboots attach autoalpha
+PonyBoots:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollponyboots=force"
+PonyBoots:true sendrlv rlvstring="detach:.ignore me/ao/oc ao=force"
+
+
+# ponyboots switch text
+PonyBoots:true say text="You attach Poppy’s Pony Boots." BalletBoots:false ThighBoots:false
+
+
+# ponyboots detach autoalpha
+PonyBoots:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollponyboots=force"
+PonyBoots:false sendrlv rlvstring="attachover:.ignore me/ao/oc ao=force"
+
+# ponyboots switch text
+PonyBoots:false say text="You detach Poppy’s Pony Boots"
+
+
+###################
+#  revbinder switch functions
+###################
+
+# show base revbinder
+links=revbinder
+faces=0,1,2,4
+RevBinder:true show
+
+# hide base revbinder
+links=revbinder
+faces=-1
+RevBinder:false hide
+
+# revbinder attach text
+RevBinder:true say text="You attach Poppy’s RevBinder." Mittens:false ArmBinder:false OBCorset:false UBinder:false UBCorset:false ButterflyBinder:false ArmlessBinder:false
+
+# revbinder attach autoalpha
+RevBinder:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollrevbinder=force"
+
+# harness detach text
+RevBinder:false say text="You remove Poppy’s RevBinder."
+
+# revbinder attach autoalpha
+RevBinder:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollrevbinder=force"
+
+###################
+#  armlessbinder switch functions
+###################
+
+# show base armlessbinder
+links=armlessbinder
+faces=0,1,2,3,4
+ArmlessBinder:true show
+
+# hide base armlessbinder
+links=armlessbinder
+faces=-1
+ArmlessBinder:false hide
+
+# armlessbinder attach text
+ArmlessBinder:true say text="You attach Poppy’s ArmlessBinder." Mittens:false ArmBinder:false OBCorset:false UBinder:false UBCorset:false ButterflyBinder:false RevBinder:false
+
+# armlessbinder attach autoalpha
+ArmlessBinder:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollarmlessbinder=force"
+
+# armlessbinder detach text
+ArmlessBinder:false say text="You remove Poppy’s ArmlessBinder."
+
+# armlessbinder attach autoalpha
+ArmlessBinder:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollarmlessbinder=force"
+
+
+###################
+#  butterflybinder switch functions
+###################
+
+# show base butterflybinder
+links=butterflybinder
+#faces=0,1,2,4
+ButterflyBinder:true show
+
+# hide base butterflybinder
+links=butterflybinder
+#faces=-1
+ButterflyBinder:false hide
+
+# butterflybinder attach text
+ButterflyBinder:true say text="You attach Poppy’s ButterflyBinder." Mittens:false ArmBinder:false  UBinder:false  RevBinder:false ArmlessBinder:false
+
+# butterflybinder attach autoalpha
+ButterflyBinder:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollbutterflybinder=force"
+
+# butterflybinder detach text
+ButterflyBinder:false say text="You remove Poppy’s ButterflyBinder."
+
+# butterflybinder attach autoalpha
+ButterflyBinder:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollbutterflybinder=force"
+
+
+
+###################
+#  mittens switch functions
+###################
+
+# show base mittens
+links=mittens
+
+Mittens:true show
+
+# hide base mittens
+links=mittens
+Mittens:false hide
+
+# mittens attach text
+Mittens:true say text="You attach Poppy’s Mittens."  RevBinder:false ArmBinder:false Bra:false ButterflyBinder:false ArmlessBinder:false
+
+# mittens attach autoalpha
+Mittens:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollmittens=force"
+
+# mittens detach text
+Mittens:false say text="You remove Poppy’s Mittens."
+
+# mittens attach autoalpha
+Mittens:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollmittens=force"
+
+
+
+###################
+#  armbinder switch functions
+###################
+
+# show base armbinder
+links=armbinder
+
+ArmBinder:true show
+
+# hide base armbinder
+links=armbinder
+ArmBinder:false hide
+
+# armbinder attach text
+ArmBinder:true say text="You attach Poppy’s ArmBinder."  Mittens:false RevBinder:false Bra:false UBinder:false UBCorset:false ButterflyBinder:false ArmlessBinder:false
+
+# armbinder attach autoalpha
+ArmBinder:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollbinder=force"
+
+# armbinder detach text
+ArmBinder:false say text="You remove Poppy’s ArmBinder."
+
+# armbinder attach autoalpha
+ArmBinder:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollbinder=force"
+
+
+###################
+#  OBcorset switch functions
+###################
+
+# show base OBcorset
+links=OBcorset
+
+OBCorset:true show
+
+# hide base OBcorset
+links=OBcorset
+OBCorset:false hide
+
+# OBcorset attach text
+OBCorset:true say text="You attach Poppy’s OBCorset."  RevBinder:false ArmBinder:false Bra:false UBCorset:false ArmlessBinder:false
+
+# OBcorset attach autoalpha
+OBCorset:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollOBcorset=force"
+
+# OBcorset detach text
+OBCorset:false say text="You remove Poppy’s OBCorset."
+
+# OBcorset attach autoalpha
+OBCorset:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollOBcorset=force"
+
+###################
+#  UBcorset switch functions
+###################
+
+# show base UBcorset
+links=UBcorset
+faces=0,1,2,3,6,7
+UBCorset:true show
+
+# hide base UBcorset
+links=UBcorset
+faces=-1
+UBCorset:false hide
+
+# UBcorset attach text
+UBCorset:true say text="You attach Poppy’s UBCorset."  RevBinder:false ArmBinder:false Bra:false OBCorset:false ArmlessBinder:false
+
+# UBcorset attach autoalpha
+UBCorset:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollUBcorset=force"
+
+# UBcorset detach text
+UBCorset:false say text="You remove Poppy’s UBCorset."
+
+# UBcorset attach autoalpha
+UBCorset:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollUBcorset=force"
+
+###################
+#  ubinder switch functions
+###################
+
+# ubinder attach text
+UBinder:true say text="You add a UBinder, Locking Poppy's arms tightly in place ." RevBinder:false ArmBinder:false ButterflyBinder:false
+
+
+# ubinder detach text
+UBinder:false say text="You remove Poppy’s UBinder."
+
+
+###################
+#  collar switch functions
+###################
+
+# collar attach text
+Collar:true say text="You pull a posture collar tightly around Poppy’s neck, locking her head in place."
+
+# collar detach text
+Collar:false say text="You remove Poppy’s posture collar."
+
+Collar:false unleash
+
+
+##########
+#alpha events#
+#########
+
+event=hairhide
+event=earshide
+event=headhide
+
+hairhide:false sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollhair=force"
+hairhide:true sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollhair=force"
+
+earshide:false sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollearhide=force"
+earshide:true sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollearhide=force"
+
+headhide:false sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollhead=force"
+headhide:true sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollhead=force"
+
+
+
+
+
+
+#################
+#  headparts menu functions
+#################
+
+# headparts menus name to call
+menuname=HeadParts_Menu
+
+# description for bridle menu page
+menutitle="Hood and Gags"
+
+# headparts menu buttons, list goes from bottom to top
+button=<<_Menu 	switch=HoodBun	switch=LatexHair
+button=Gags_>>    	button=Hoods_>>
+
+# opens hoods menu
+Hoods_>>:true showmenu menu=Hoods_Menu
+
+# opens gags menu
+Gags_>>:true showmenu menu=Gags_Menu
+
+# returns back to tack menu
+<<_Menu:true showmenu menu=local
+
+# opens AnaVisions main menu
+AnaVision:true showmenu menu=anavision
+
+
+
+#################
+#  hoods menu functions
+#################
+
+# hoods menus name to call
+menuname=Hoods_Menu
+
+# description for bridle menu page
+menutitle="Hoods"
+
+# headparts menu buttons, list goes from bottom to top
+button=<<_Menu     	switch=BlankHood	switch=CassHood
+switch=MouthHood 	switch=GwenHood	switch=PerseeHood
+switch=HeleneHood
+
+
+#################
+#  gags menu functions
+#################
+
+# gags menus name to call
+menuname=Gags_Menu
+
+# description for bridle menu page
+menutitle="Please remove a gag BEFORE adding a new one"
+
+# gags menu buttons, list goes from bottom to top
+button=<<_Menu     	switch=BallGag 	switch=HoodGag
+button=Garble_>>   	switch=BitGag   	switch=RingGag
+switch=WiffleGag    	switch=PlugGag
+
+Garble_>>:true showmenu menu=Garble_Menu
+
+#################
+#  garble menu functions
+#################
+
+# enables garbler on rez
+onrez:true saychan text="8|garble 1"
+
+# leash menus name to call
+menuname=Garble_Menu
+
+
+# description for leash menu page
+menutitle="Set garble strength."
+
+button=<<_Menu 	 
+button=Loose   	button=Medium   	button=Tight    
+
+Loose:true saychan text="8|garble 1"
+#Loose:true BallGag?false BallGag:true
+Medium:true saychan text="8|garble 2"
+#Medium:true BallGag?false BallGag:true
+Tight:true saychan text="8|garble 3"
+#Tight:true BallGag?false BallGag:true
+
+
+
+
+
+#################
+#  hood switch functions
+#################
+#########
+#mouthhood#
+#########
+
+
+
+# sends text to confirm bridle removal
+MouthHood:true say text="You pull Poppy’s hood over her head."
+
+# mouthhood attach
+MouthHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollmouthhood=force" BlankHood:false CassHood:false PerseeHood:false GwenHood:false HeleneHood:false
+
+# sends text to confirm bridle removal
+MouthHood:false say text="You remove Poppy’s hood."
+
+# mouthhood detach
+MouthHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollmouthhood=force"
+
+
+########
+#blankhood#
+########
+
+
+
+# sends text to confirm bridle removal
+BlankHood:true say text="You pull Poppy’s hood over her head."
+
+# blankhood attach
+BlankHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollblankhood=force"  CassHood:false  MouthHood:false BallGag:false PerseeHood:false GwenHood:false HeleneHood:false
+
+# sends text to confirm bridle removal
+BlankHood:false say text="You remove Poppy’s hood."
+
+# blankhood detach
+BlankHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollblankhood=force"
+
+########
+#casshood#
+########
+
+
+
+# sends text to confirm bridle removal
+CassHood:true say text="You pull Poppy’s hood over her head."
+
+# casshood attach
+CassHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollcasshood=force" MouthHood:false BlankHood:false BallGag:false PerseeHood:false GwenHood:false HeleneHood:false
+
+
+
+# sends text to confirm bridle removal
+CassHood:false say text="You remove Poppy’s hood."
+
+# casshood detach
+CassHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollcasshood=force"
+
+
+########
+#helenehood#
+########
+
+
+
+# sends text to confirm bridle removal
+HeleneHood:true say text="You pull Poppy’s hood over her head."
+
+# helenehood attach
+HeleneHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollhelenehood=force" MouthHood:false BlankHood:false CassHood:false GwenHood:false PerseeHood:false
+
+# sends text to confirm bridle removal
+HeleneHood:false say text="You remove Poppy’s hood."
+
+# helenehood detach
+HeleneHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollhelenehood=force"
+
+
+########
+#gwenhood#
+########
+
+
+
+# sends text to confirm bridle removal
+GwenHood:true say text="You pull Poppy’s hood over her head."
+
+# gwenhood attach
+GwenHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollgwenhood=force" MouthHood:false BlankHood:false BallGag:false CassHood:false PerseeHood:false HeleneHood:false
+
+
+
+# sends text to confirm bridle removal
+GwenHood:false say text="You remove Poppy’s hood."
+
+# gwenhood detach
+GwenHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollgwenhood=force"
+
+
+########
+#perseehood#
+########
+
+
+
+# sends text to confirm bridle removal
+PerseeHood:true say text="You pull Poppy’s hood over her head."
+
+# perseehood attach
+PerseeHood:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollperseehood=force" MouthHood:false BlankHood:false CassHood:false GwenHood:false HeleneHood:false
+
+# sends text to confirm bridle removal
+PerseeHood:false say text="You remove Poppy’s hood."
+
+# perseehood detach
+PerseeHood:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollperseehood=force"
+
+
+#######
+#hoodbun#
+#######
+
+# sends text to confirm bridle removal
+HoodBun:true say text="You add Poppy’s hood bun." LatexHair:false
+
+
+# sends text to confirm bridle removal
+HoodBun:false say text="You remove Poppy’s hood bun."
+
+#######
+#LatexHair#
+#######
+
+# sends text to confirm bridle removal
+LatexHair:true say text="You add Poppy’s latex hair." HoodBun:false
+
+
+# sends text to confirm bridle removal
+LatexHair:false say text="You remove Poppy’s latex hair."
+
+
+####################################################
+########################  gags ########################
+
+###############
+#  ballgag switch functions
+###############
+
+# blocks chat to garble
+BallGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+BallGag:true say text="You gag Poppy tightly - Local Chat restricted"  BlankHood:false CassHood:false GwenHood:false PlugGag:false HoodGag:false RingGag:false BitGag:false WiffleGag:false
+
+# removes chat block for garble
+BallGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+BallGag:false say text="You ungag Poppy."
+
+
+###############
+#  hoodgag switch functions
+###############
+
+# blocks chat to garble
+HoodGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+HoodGag:true say text="You gag Poppy tightly - Local Chat restricted"  MouthHood:false  BallGag:false BallGag:false PlugGag:false RingGag:false BitGag:false WiffleGag:false
+
+# removes chat block for garble
+HoodGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+HoodGag:false say text="You ungag Poppy."
+
+
+###############
+#  ringgag switch functions
+###############
+
+# blocks chat to garble
+RingGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+RingGag:true say text="You gag Poppy tightly - Local Chat restricted"  BlankHood:false CassHood:false GwenHood:false BallGag:false HoodGag:false PlugGag:false BitGag:false WiffleGag:false
+
+# removes chat block for garble
+RingGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+RingGag:false say text="You ungag Poppy."
+
+
+###############
+#  bitgag switch functions
+###############
+
+# blocks chat to garble
+BitGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+BitGag:true say text="You gag Poppy tightly - Local Chat restricted"  BlankHood:false CassHood:false GwenHood:false BallGag:false HoodGag:false RingGag:false PlugGag:false WiffleGag:false
+
+# removes chat block for garble
+BitGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+BitGag:false say text="You ungag Poppy."
+
+
+###############
+#  wifflegag switch functions
+###############
+
+# blocks chat to garble
+WiffleGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+WiffleGag:true say text="You gag Poppy tightly - Local Chat restricted"  BlankHood:false CassHood:false GwenHood:false  BallGag:false HoodGag:false RingGag:false BitGag:false PlugGag:false
+
+# removes chat block for garble
+WiffleGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+WiffleGag:false say text="You ungag Poppy."
+
+###############
+#  pluggag switch functions
+###############
+
+# blocks chat to garble
+PlugGag:true sendrlv rlvstring="sendchat=n"
+
+# sends text to confirm bit
+PlugGag:true say text="You gag Poppy tightly - Local Chat restricted"  BlankHood:false CassHood:false GwenHood:false BallGag:false HoodGag:false RingGag:false BitGag:false WiffleGag:false
+
+# removes chat block for garble
+PlugGag:false sendrlv rlvstring="sendchat=y"
+
+# sends text to confirm bit removal
+PlugGag:false say text="You ungag Poppy."
+
+
+################
+#  leash menu functions
+################
+
+# leash menus name to call
+menuname=leashing
+
+
+# description for leash menu page
+menutitle="Leashing menu. Leash Turn: forces pony to look at the leashholder. Close = 0.75m. Normal = 2m. Cart = 5m. Circle = 11m."
+
+
+
+button=<<_Menu     	 
+button=Leash_Circle   	button=Unleash            	switch=Leash_Turn 	 
+button=Leash_Close   	button=Leash_Normal   	button=Leash_Cart    
+
+
+# leash rlv commands including keyholder exception
+event=leashrlv
+leashrlv:true sendrlv rlvstring="tplm=n,tploc=n,sittp:1.5=n,tplure=n,tplure:$KEY=add,accepttp:$KEY=add"
+leashrlv:false sendrlv rlvstring="tplm=y,tploc=y,sittp:1.5=y,tplure=y,tplure:$KEY=rem,accepttp:$KEY=rem"
+
+# when leashed, enable rlv and post in chat
+leashing:true leashrlv:true say text="Poppy has been Leashed."
+
+# when leashed, make collar visible
+leashing:true Collar:true
+
+# when unleashed, disable rlv and post in chat
+leashing:false leashrlv:false say text="Poppy has been Unleashed."
+
+# leashacc sets the acceleration when yanking the leash. Smooth movement default is 2.0
+# use < 1 for faster movement
+leashacc=0.1
+
+# leashes pony with range of 0.75m
+Leash_Close:true leash leashlen=0.75
+
+# leashes pony with range of 2m
+Leash_Normal:true leash leashlen=2
+
+# leashes pony with range of 5m
+Leash_Cart:true leash leashlen=5
+
+# leashes pony with range of 11m
+leash_circle:true leash leashlen=11
+
+# parameter leashturn can be set to force turning to the leashholder
+# leash parameters are only activated on the next "leash" actions, which is done in this example
+# a condition is used - the leash is only updated when active
+#
+Leash_Turn:true setpar leashturn=1
+Leash_Turn:false setpar leashturn=0
+
+# use action unleash to unleash
+Unleash:true unleash
+
+
+
+
+##################
+#  belt menu functions
+##################
+
+# leash menus name to call
+menuname=Belt_Menu
+
+
+# description for Belt menu page
+menutitle="Lock up the Dolly and fill her holes."
+
+
+button=<<_Menu
+switch=Chaste	switch=Vibe   	 
+switch=Belt       	button=Plugs_>>
+
+# opens plugs menu
+Plugs_>>:true showmenu menu=Plugs_Menu
+
+  	 
+
+
+
+##########################################
+#################Plugs Menu#################
+
+# Plugs menus name to call
+menuname=Plugs_Menu
+
+button=Belt_>>   switch=Plug1   switch=Plug2
+switch=Plug3	switch=Dildo1	switch=Dildo2
+switch=Dildo3  	switch=DildoPump   switch=PlugPump
+
+#####Dildo1#####
+
+# show/hide dildo1
+links=dildo1
+faces=-1
+Dildo1:true show Belt:true Chaste:true Dildo3:false Dildo2:false
+Dildo1:false hide
+
+# dildo1 attach text
+Dildo1:true say text="You insert a small sized dildo into Poppy’s Chastity Belt."
+
+# dildo1 detach text
+Dildo1:false say text="You remove the small sized dildo from Poppy’s Chastity Belt."
+
+##Dildo2##
+
+# show/hide dildo2
+links=dildo2
+faces=-1
+Dildo2:true show Belt:true Chaste:true Dildo1:false Dildo3:false
+Dildo2:false hide
+
+# dildo2 attach text
+Dildo2:true say text="You insert a medium sized dildo into Poppy’s Chastity Belt."
+
+# dildo2 detach text
+Dildo2:false say text="You remove the medium sized dildo from Poppy’s Chastity Belt."
+
+##Dildo3##
+
+# show/hide dildo3
+links=dildo3
+faces=-1
+Dildo3:true show Belt:true Chaste:true Dildo1:false Dildo2:false
+Dildo3:false hide
+
+# dildo3 attach text
+Dildo3:true say text="You insert a large sized dildo into Poppy’s Chastity Belt."
+
+# dildo3 detach text
+Dildo3:false say text="You remove the large sized dildo from Poppy’s Chastity Belt."
+
+####Plug####
+
+# show/hide plug1
+links=plug1
+faces=-1
+Plug1:true show Belt:true Chaste:true Plug3:false Plug2:false
+Plug1:false hide
+
+# plug1 attach text
+Plug1:true say text="You insert a small sized plug into the rear of Poppy’s Chastity Belt."
+
+# plug1 detach text
+Plug1:false say text="You remove the small sized plug from Poppy’s Chastity Belt."
+
+####Plug2####
+
+# show/hide plug2
+links=plug2
+faces=-1
+Plug2:true show Belt:true Chaste:true Plug3:false Plug1:false
+Plug2:false hide
+
+# plug2 attach text
+Plug2:true say text="You insert a medium sized plug into the rear of Poppy’s Chastity Belt."
+
+# plug2 detach text
+Plug2:false say text="You remove the medium sized plug from Poppy’s Chastity Belt."
+
+####Plug3####
+
+# show/hide plug3
+links=plug3
+faces=-1
+Plug3:true show Belt:true Chaste:true  Plug1:false Plug2:false
+Plug3:false hide
+
+# plug3 attach text
+Plug3:true say text="You insert a large sized plug into the rear of Poppy’s Chastity Belt."
+
+# plug3 detach text
+Plug3:false say text="You remove the large sized plug from Poppy’s Chastity Belt."
+
+###vibe###
+# vibe sound on/off
+Vibe:true loopsound sound=8742828c-9b70-477e-ff6e-25fd3e30c1af  Chaste:true
+Vibe:false stopsound
+
+# show/hide vibe
+links=vibe
+faces=-1
+Vibe:true show  
+Vibe:false hide
+
+
+
+####Plugpump####
+
+# show/hide plugpump
+links=plugpump
+faces=-1
+Plugpump:true show Belt:true Chaste:true
+Plugpump:false hide
+
+####Dildopump####
+
+# show/hide dildopump
+links=dildopump
+faces=-1
+dildopump:true show Belt:true Chaste:true
+dildopump:false hide
+
+# show/hide belt main
+links=belt
+faces=-1
+Belt:true show   Panty:false
+Belt:false hide Chaste:false
+
+Panty:true   Belt:false
+
+# show/hide belt strap
+links=lowerstrap
+faces=-1
+Chaste:true show Belt:true
+Chaste:false hide Dildo1:false Plug1:false Vibe:false Dildo2:false Plug2:false Dildo3:false Plug3:false DildoPump:false PlugPump:false
+
+# belt attach text
+Chaste:true say text="You seal up Poppy’s Chastity Belt."
+
+# belt detach text
+Chaste:false say text="You open up Poppy’s Chastity Belt."
+
+
+
+###################
+#  bra switch functions
+###################
+
+# bra attach text
+Bra:true say text="You add a Chastity Bra, Locking Poppy's breasts tightly in place ."
+
+# bra attach autoalpha
+Bra:true sendrlv rlvstring="attachover:.ignore me/Doll Outfit AV/dollbra=force" OBCorset:false
+# bra detach text
+Bra:false say text="You remove Poppy’s Chastity Bra."
+
+# bra detach autoalpha
+Bra:false sendrlv rlvstring="detach:.ignore me/Doll Outfit AV/dollbra=force"
+
+
+
+######
+#rename#
+######
+event=rename
+rename:true saychan text="8|rename PopDoll"
+rename:false  saychan text="8|stop"
+
+lock?true | BallGag?true | HoodGag?true | CassHood?true | PerseeHood?true | HeleneHood?true | GwenHood?true | MouthHood?true | BlankHood?true rename:true
+
+lock?false BallGag?false HoodGag?false CassHood?false PerseeHood?false HeleneHood?false GwenHood?false MouthHood?false BlankHood?false rename:false
+
+
+CassHood?true | PerseeHood?true | HeleneHood?true | GwenHood?true | MouthHood?true | BlankHood?true hairhide:true
+
+CassHood?false PerseeHood?false HeleneHood?false GwenHood?false MouthHood?false BlankHood?false hairhide:false
+
+CassHood?true | PerseeHood?true | HeleneHood?true | GwenHood?true | MouthHood?true | BlankHood?true earshide:true
+
+CassHood?false PerseeHood?false HeleneHood?false GwenHood?false MouthHood?false BlankHood?false earshide:false
+
+MouthHood?true | BlankHood?true headhide:true
+
+MouthHood?false BlankHood?false headhide:false
