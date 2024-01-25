@@ -1,0 +1,144 @@
+# slave tag 2
+slave=2
+
+Lock:true sendrlv rlvstring="detach=n"
+Lock:false sendrlv rlvstring="detach=y"
+
+####################
+########ballgag########
+####################
+
+switch=BallGag
+links=ballgag
+
+#show ballgag
+BallGag:true show
+
+# play ballgag anim
+BallGag:true animstart animnumber=3
+
+# plays gagged sound
+BallGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide ballgag
+BallGag:false hide
+
+# stop ballgag anim
+BallGag:false animstop
+
+
+
+
+
+########################
+##########hoodgag#########
+########################
+
+switch=HoodGag
+links=hoodgag
+
+#show hoodgag
+HoodGag:true show
+
+# play hoodgag anim
+HoodGag:true animstart animnumber=5
+
+# plays gagged sound
+HoodGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide hoodgag
+HoodGag:false hide
+
+# stop hoodgag anim
+HoodGag:false animstop
+
+
+####################
+########ringgag########
+####################
+
+switch=RingGag
+links=ringgag
+
+#show ringgag
+RingGag:true show
+
+# play ringgag anim
+RingGag:true animstart animnumber=2
+
+# plays gagged sound
+RingGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide ringgag
+RingGag:false hide
+
+# stop ringgag anim
+RingGag:false animstop
+
+
+####################
+########bitgag########
+####################
+
+switch=BitGag
+links=bitgag
+
+#show bitgag
+BitGag:true show
+
+# play bitgag anim
+BitGag:true animstart animnumber=1
+
+# plays gagged sound
+BitGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide bitgag
+BitGag:false hide
+
+# stop bitgag anim
+BitGag:false animstop
+
+####################
+########wifflegag########
+####################
+
+switch=WiffleGag
+links=wifflegag
+
+#show wifflegag
+WiffleGag:true show
+
+# play wifflegag anim
+WiffleGag:true animstart animnumber=4
+
+# plays gagged sound
+WiffleGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide wifflegag
+WiffleGag:false hide
+
+# stop wifflegag anim
+WiffleGag:false animstop
+
+
+####################
+########pluggag########
+####################
+
+switch=PlugGag
+links=pluggag
+
+#show pluggag
+PlugGag:true show
+
+# play pluggag anim
+PlugGag:true animstart animnumber=6
+
+# plays gagged sound
+PlugGag:true playsound sound=5ef811d5-1dd7-df00-ad96-e37c97d3d67b
+
+# hide pluggag
+PlugGag:false hide
+
+# stop pluggag anim
+PlugGag:false animstop
