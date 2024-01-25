@@ -1,0 +1,14 @@
+# slave tag 2
+slave=2
+
+switch=Bra
+links=bra
+
+# show bra
+Bra:true show
+
+# hide bra
+Bra:false hide
+
+Lock:true sendrlv rlvstring="detach=n"
+Lock:false sendrlv rlvstring="detach=y"

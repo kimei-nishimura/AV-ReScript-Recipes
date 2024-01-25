@@ -1,0 +1,119 @@
+# slave tag 2
+slave=2
+
+
+Lock:true sendrlv rlvstring="detach=n"
+Lock:false sendrlv rlvstring="detach=y"
+
+########
+#mouthhood#
+########
+
+switch=MouthHood
+links=mouthhood
+
+# show mouthhood
+MouthHood:true show
+
+# hide mouthhood
+MouthHood:false hide
+
+
+
+########
+#blankhood#
+########
+
+switch=BlankHood
+links=blankhood
+
+# show blankhood
+BlankHood:true show
+
+# hide blankhood
+BlankHood:false hide
+
+
+
+########
+#casshood#
+########
+
+switch=CassHood
+links=casshood
+
+# show casshood
+CassHood:true show
+
+# hide casshood
+CassHood:false hide
+
+
+########
+#gwenhood#
+########
+
+switch=GwenHood
+links=gwenhood
+
+# show gwenhood
+GwenHood:true show
+
+# hide gwenhood
+GwenHood:false hide
+
+
+#########
+#helenehood#
+#########
+
+switch=HeleneHood
+links=helenehood
+
+# show helenehood
+HeleneHood:true show
+
+# hide helenehood
+HeleneHood:false hide
+
+
+########
+#perseehood#
+########
+
+switch=PerseeHood
+links=perseehood
+
+# show perseehood
+PerseeHood:true show
+
+# hide perseehood
+PerseeHood:false hide
+
+
+#######
+#hoodbun#
+#######
+
+switch=HoodBun
+links=hoodbun
+
+# show hoodbun
+HoodBun:true show
+
+# hide hoodbun
+HoodBun:false hide
+
+
+#######
+#latexhair#
+#######
+
+switch=LatexHair
+links=latexhair
+
+# show latexhair
+LatexHair:true show
+
+# hide latexhair
+LatexHair:false hide

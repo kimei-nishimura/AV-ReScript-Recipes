@@ -1,0 +1,21 @@
+# slave tag 2
+slave=2
+
+switch=Collar
+links=collar
+
+# show collar
+Collar:true show
+
+# play collar necklock anim
+Collar:true animstart
+
+# hide collar
+Collar:false hide
+
+#stop collar necklock anim
+Collar:false animstop
+
+
+Lock:true sendrlv rlvstring="detach=n"
+Lock:false sendrlv rlvstring="detach=y"

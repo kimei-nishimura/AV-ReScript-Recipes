@@ -1,0 +1,24 @@
+# slave tag 2
+slave=2
+
+switch=Ubinder
+links=ubinder
+
+# show ubinder
+Ubinder:true show
+
+# play ubinder anim
+Ubinder:true animstart
+
+# hide ubinder
+Ubinder:false hide
+
+#stop ubinder anim
+Ubinder:false animstop
+
+
+Lock:true sendrlv rlvstring="detach=n"
+Lock:false sendrlv rlvstring="detach=y"
+
+
+
